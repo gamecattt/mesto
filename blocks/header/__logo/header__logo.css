@@ -1,0 +1,7 @@
+.header__logo {
+  transition: transform 0.3s;
+}
+
+.header__logo:hover {
+  transform: scale(1.05);
+}
