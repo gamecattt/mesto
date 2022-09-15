@@ -1,0 +1,7 @@
+.profile__btn-add {
+  background: transparent;
+  padding: 12px 62px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  cursor: pointer;
+}
