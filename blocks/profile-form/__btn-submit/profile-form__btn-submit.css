@@ -1,0 +1,24 @@
+.profile-form__btn-submit {
+  color: #fff;
+  font-size: 18px;
+  line-height: 22px;
+  background: #000;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px 0;
+  transition: opacity 0.2s;
+}
+
+.profile-form__btn-submit:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 620px) {
+  .profile-form__btn-submit {
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 17px;
+  }
+}

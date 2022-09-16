@@ -3,4 +3,9 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  transition: opacity 0.2s;
+}
+
+.showcase__btn-like:hover {
+  opacity: 0.5;
 }

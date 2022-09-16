@@ -6,7 +6,6 @@
 
 @media screen and (max-width: 918px) {
   .profile__avatar {
-    display: flex;
     justify-self: center;
   }
 }

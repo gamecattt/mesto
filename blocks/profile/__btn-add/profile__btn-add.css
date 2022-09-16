@@ -4,4 +4,12 @@
   border: 2px solid #fff;
   border-radius: 2px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+.profile__btn-add:hover {
+  opacity: 0.6;
 }

@@ -1,0 +1,17 @@
+.profile-form__input {
+  display: block;
+  font-size: 14px;
+  line-height: 17px;
+  width: 100%;
+  padding: 0 0 8px;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.profile-form__input:focus {
+  border-color: #000;
+}

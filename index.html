@@ -25,12 +25,14 @@
           <img class="profile__avatar" src="./images/avatar.jpg" alt="Жак-Ив Кусто" />
           <div class="profile__info">
             <div class="profile__heading">
-              <h1 class="profile__nickname">Жак-Ив Кусто</h1>
+              <h1 class="profile__nickname">GameCattt</h1>
               <button class="profile__btn-edit">
                 <img class="icon" src="./images/icon-pencil.svg" alt="Редактировать профиль" />
               </button>
             </div>
-            <p class="profile__description">Исследователь океана</p>
+            <p class="profile__description">
+              Королева паддингов, расхитительница попапов, укротительница гридов
+            </p>
           </div>
           <button class="profile__btn-add">
             <img class="icon" src="./images/icon-plus.svg" alt="Добавить фото" />
@@ -41,7 +43,7 @@
             <li class="showcase__item">
               <img class="showcase__img" src="./images/item_1.jpg" alt="Резиденция Деда Мороза" />
               <div class="showcase__bar">
-                <p class="showcase__caption">Великий Устюг</p>
+                <h2 class="showcase__caption">Великий Устюг</h2>
                 <button class="showcase__btn-like showcase__btn-like_active">
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
@@ -50,7 +52,7 @@
             <li class="showcase__item">
               <img class="showcase__img" src="./images/item_2.jpg" alt="Скалы Три брата" />
               <div class="showcase__bar">
-                <p class="showcase__caption">Александровск-Сахалинский</p>
+                <h2 class="showcase__caption">Александровск-Сахалинский</h2>
                 <button class="showcase__btn-like showcase__btn-like_active">
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
@@ -63,7 +65,7 @@
                 alt="Мемориал - Защитникам Советского Заполярья"
               />
               <div class="showcase__bar">
-                <p class="showcase__caption">Мурманск</p>
+                <h2 class="showcase__caption">Мурманск</h2>
                 <button class="showcase__btn-like showcase__btn-like_active">
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
@@ -72,7 +74,7 @@
             <li class="showcase__item">
               <img class="showcase__img" src="./images/item_4.jpg" alt="Белгородский университет" />
               <div class="showcase__bar">
-                <p class="showcase__caption">Белгород</p>
+                <h2 class="showcase__caption">Белгород</h2>
                 <button class="showcase__btn-like showcase__btn-like_active">
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
@@ -81,7 +83,7 @@
             <li class="showcase__item">
               <img class="showcase__img" src="./images/item_5.jpg" alt="Гора Керосинка" />
               <div class="showcase__bar">
-                <p class="showcase__caption">Миасс</p>
+                <h2 class="showcase__caption">Миасс</h2>
                 <button class="showcase__btn-like showcase__btn-like_active">
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
@@ -90,7 +92,7 @@
             <li class="showcase__item">
               <img class="showcase__img" src="./images/item_6.jpg" alt="Старый город" />
               <div class="showcase__bar">
-                <p class="showcase__caption">Выборг</p>
+                <h2 class="showcase__caption">Выборг</h2>
                 <button class="showcase__btn-like showcase__btn-like_active">
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
@@ -102,6 +104,19 @@
       <footer class="footer">
         <p class="footer__author">&copy 2022 GameCattt</p>
       </footer>
+      <section class="popup">
+        <div class="popup__container">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <form class="profile-form" action="#">
+            <input class="profile-form__input" type="text" placeholder="Имя" required />
+            <input class="profile-form__input" type="text" placeholder="О себе" required />
+            <button class="profile-form__btn-submit">Сохранить</button>
+          </form>
+          <button class="popup__btn-close">
+            <img class="icon" src="./images/icon-close.svg" alt="Закрыть" />
+          </button>
+        </div>
+      </section>
     </div>
   </body>
 </html>
