@@ -19,5 +19,14 @@
 @import url(../blocks/profile/__btn-edit/profile__btn-edit.css);
 @import url(../blocks/profile/__btn-add/profile__btn-add.css);
 
+@import url(../blocks/showcase/showcase.css);
+@import url(../blocks/showcase/__list/showcase__list.css);
+@import url(../blocks/showcase/__item/showcase__item.css);
+@import url(../blocks/showcase/__img/showcase__img.css);
+@import url(../blocks/showcase/__bar/showcase__bar.css);
+@import url(../blocks/showcase/__caption/showcase__caption.css);
+@import url(../blocks/showcase/__btn-like/showcase__btn-like.css);
+@import url(../blocks/showcase/__btn-like/_active/showcase__btn-like_active.css);
+
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__author/footer__author.css);

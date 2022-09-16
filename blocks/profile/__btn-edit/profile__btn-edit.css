@@ -4,3 +4,12 @@
   border: 1px solid #fff;
   cursor: pointer;
 }
+
+@media screen and (max-width: 918px) {
+  .profile__btn-edit {
+    position: absolute;
+    bottom: 16px;
+    right: -28px;
+    padding: 3px;
+  }
+}
