@@ -32,7 +32,7 @@
           <div class="profile__info">
             <div class="profile__heading">
               <h1 class="profile__nickname">GameCattt</h1>
-              <button class="profile__btn-edit">
+              <button class="profile__btn-edit" type="button">
                 <img class="icon" src="./images/icon-pencil.svg" alt="Редактировать профиль" />
               </button>
             </div>
@@ -113,7 +113,7 @@
       <div class="popup">
         <div class="popup__container">
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="profile-form" action="#">
+          <form class="profile-form" action="#" name="profileForm">
             <input
               class="profile-form__input"
               name="nickname"
@@ -128,7 +128,7 @@
               placeholder="О себе"
               required
             />
-            <button class="profile-form__btn-submit">Сохранить</button>
+            <button class="profile-form__btn-submit" type="submit">Сохранить</button>
           </form>
           <button class="popup__btn-close">
             <img class="icon" src="./images/icon-close.svg" alt="Закрыть" />
@@ -136,6 +136,6 @@
         </div>
       </div>
     </div>
-    <script src="./index.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

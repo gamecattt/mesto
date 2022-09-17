@@ -3,9 +3,9 @@ const popup = document.querySelector('.popup');
 const closeBtn = popup.querySelector('.popup__btn-close');
 const nickname = document.querySelector('.profile__nickname');
 const description = document.querySelector('.profile__description');
-const nicknameInput = popup.querySelector('[name="nickname"]');
-const descriptionInput = popup.querySelector('[name="description"]');
-const form = popup.querySelector('.profile-form');
+const form = document.forms.profileForm;
+const nicknameInput = form.elements.nickname;
+const descriptionInput = form.elements.description;
 
 editBtn.addEventListener('click', editBtnClickHandler);
 closeBtn.addEventListener('click', closePopup);
