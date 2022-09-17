@@ -108,8 +108,20 @@
         <div class="popup__container">
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="profile-form" action="#">
-            <input class="profile-form__input" type="text" placeholder="Имя" required />
-            <input class="profile-form__input" type="text" placeholder="О себе" required />
+            <input
+              class="profile-form__input"
+              name="nickname"
+              type="text"
+              placeholder="Имя"
+              required
+            />
+            <input
+              class="profile-form__input"
+              name="description"
+              type="text"
+              placeholder="О себе"
+              required
+            />
             <button class="profile-form__btn-submit">Сохранить</button>
           </form>
           <button class="popup__btn-close">
@@ -118,5 +130,6 @@
         </div>
       </section>
     </div>
+    <script src="./index.js"></script>
   </body>
 </html>
