@@ -1,4 +1,4 @@
-.showcase__btn-like {
+.post__btn-like {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -6,6 +6,6 @@
   transition: opacity 0.2s;
 }
 
-.showcase__btn-like:hover {
+.post__btn-like:hover {
   opacity: 0.5;
 }

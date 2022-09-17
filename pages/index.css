@@ -21,11 +21,12 @@
 
 @import url(../blocks/showcase/showcase.css);
 @import url(../blocks/showcase/__list/showcase__list.css);
-@import url(../blocks/showcase/__item/showcase__item.css);
-@import url(../blocks/showcase/__img/showcase__img.css);
-@import url(../blocks/showcase/__bar/showcase__bar.css);
-@import url(../blocks/showcase/__caption/showcase__caption.css);
-@import url(../blocks/showcase/__btn-like/showcase__btn-like.css);
+
+@import url(../blocks/post/post.css);
+@import url(../blocks/post/__img/post__img.css);
+@import url(../blocks/post/__bar/post__bar.css);
+@import url(../blocks/post/__caption/post__caption.css);
+@import url(../blocks/post/__btn-like/post__btn-like.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__author/footer__author.css);

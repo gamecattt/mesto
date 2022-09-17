@@ -32,7 +32,7 @@
           <div class="profile__info">
             <div class="profile__heading">
               <h1 class="profile__nickname">GameCattt</h1>
-              <button class="profile__btn-edit" type="button">
+              <button class="profile__btn-edit" type="button" aria-label="Редактировать профиль">
                 <img class="icon" src="./images/icon-pencil.svg" alt="Редактировать профиль" />
               </button>
             </div>
@@ -40,66 +40,90 @@
               Королева паддингов, расхитительница попапов, укротительница гридов
             </p>
           </div>
-          <button class="profile__btn-add">
+          <button class="profile__btn-add" type="button" aria-label="Добавить фото">
             <img class="icon" src="./images/icon-plus.svg" alt="Добавить фото" />
           </button>
         </section>
         <section class="showcase">
           <ul class="showcase__list">
-            <li class="showcase__item">
-              <img class="showcase__img" src="./images/item_1.jpg" alt="Резиденция Деда Мороза" />
-              <div class="showcase__bar">
-                <h2 class="showcase__caption">Великий Устюг</h2>
-                <button class="showcase__btn-like showcase__btn-like_active">
+            <li class="post">
+              <img class="post__img" src="./images/item_1.jpg" alt="Резиденция Деда Мороза" />
+              <div class="post__bar">
+                <h2 class="post__caption">Великий Устюг</h2>
+                <button
+                  class="post__btn-like post__btn-like_active"
+                  type="button"
+                  aria-label="Поставить лайк"
+                >
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
               </div>
             </li>
-            <li class="showcase__item">
-              <img class="showcase__img" src="./images/item_2.jpg" alt="Скалы Три брата" />
-              <div class="showcase__bar">
-                <h2 class="showcase__caption">Александровск-Сахалинский</h2>
-                <button class="showcase__btn-like showcase__btn-like_active">
+            <li class="post">
+              <img class="post__img" src="./images/item_2.jpg" alt="Скалы Три брата" />
+              <div class="post__bar">
+                <h2 class="post__caption">Александровск-Сахалинский</h2>
+                <button
+                  class="post__btn-like post__btn-like_active"
+                  type="button"
+                  aria-label="Поставить лайк"
+                >
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
               </div>
             </li>
-            <li class="showcase__item">
+            <li class="post">
               <img
-                class="showcase__img"
+                class="post__img"
                 src="./images/item_3.jpg"
                 alt="Мемориал - Защитникам Советского Заполярья"
               />
-              <div class="showcase__bar">
-                <h2 class="showcase__caption">Мурманск</h2>
-                <button class="showcase__btn-like showcase__btn-like_active">
+              <div class="post__bar">
+                <h2 class="post__caption">Мурманск</h2>
+                <button
+                  class="post__btn-like post__btn-like_active"
+                  type="button"
+                  aria-label="Поставить лайк"
+                >
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
               </div>
             </li>
-            <li class="showcase__item">
-              <img class="showcase__img" src="./images/item_4.jpg" alt="Белгородский университет" />
-              <div class="showcase__bar">
-                <h2 class="showcase__caption">Белгород</h2>
-                <button class="showcase__btn-like showcase__btn-like_active">
+            <li class="post">
+              <img class="post__img" src="./images/item_4.jpg" alt="Белгородский университет" />
+              <div class="post__bar">
+                <h2 class="post__caption">Белгород</h2>
+                <button
+                  class="post__btn-like post__btn-like_active"
+                  type="button"
+                  aria-label="Поставить лайк"
+                >
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
               </div>
             </li>
-            <li class="showcase__item">
-              <img class="showcase__img" src="./images/item_5.jpg" alt="Гора Керосинка" />
-              <div class="showcase__bar">
-                <h2 class="showcase__caption">Миасс</h2>
-                <button class="showcase__btn-like showcase__btn-like_active">
+            <li class="post">
+              <img class="post__img" src="./images/item_5.jpg" alt="Гора Керосинка" />
+              <div class="post__bar">
+                <h2 class="post__caption">Миасс</h2>
+                <button
+                  class="post__btn-like post__btn-like_active"
+                  type="button"
+                  aria-label="Поставить лайк"
+                >
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
               </div>
             </li>
-            <li class="showcase__item">
-              <img class="showcase__img" src="./images/item_6.jpg" alt="Старый город" />
-              <div class="showcase__bar">
-                <h2 class="showcase__caption">Выборг</h2>
-                <button class="showcase__btn-like showcase__btn-like_active">
+            <li class="post">
+              <img class="post__img" src="./images/item_6.jpg" alt="Старый город" />
+              <div class="post__bar">
+                <h2 class="post__caption">Выборг</h2>
+                <button
+                  class="post__btn-like post__btn-like_active"
+                  type="button"
+                  aria-label="Поставить лайк"
+                >
                   <img class="icon" src="./images/icon-like.svg" alt="Нравится" />
                 </button>
               </div>
@@ -130,7 +154,7 @@
             />
             <button class="profile-form__btn-submit" type="submit">Сохранить</button>
           </form>
-          <button class="popup__btn-close">
+          <button class="popup__btn-close" type="button">
             <img class="icon" src="./images/icon-close.svg" alt="Закрыть" />
           </button>
         </div>
