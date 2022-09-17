@@ -1,16 +1,16 @@
-.wrapper {
+.page__wrapper {
   max-width: 880px;
   margin: 0 auto;
 }
 
 @media screen and (max-width: 918px) {
-  .wrapper {
+  .page__wrapper {
     max-width: 619px;
   }
 }
 
 @media screen and (max-width: 620px) {
-  .wrapper {
+  .page__wrapper {
     max-width: 320px;
   }
 }

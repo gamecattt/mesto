@@ -5,15 +5,10 @@
   display: flex;
 }
 
-@media screen and (max-width: 992px) {
-  .header {
-    padding: 0 27px 31px;
-  }
-}
-
 @media screen and (max-width: 918px) {
   .header {
     margin-top: 28px;
+    padding: 0 27px 31px;
   }
 }
 

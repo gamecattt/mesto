@@ -20,7 +20,7 @@
                      ( (  )   (  ) )
                     (__(__)___(__)__)
                 -->
-    <div class="wrapper">
+    <div class="page__wrapper">
       <header class="header">
         <a class="header__logo" href="#">
           <img class="header__logo-img" src="./images/logo.svg" alt="Место" />
@@ -110,19 +110,32 @@
       <footer class="footer">
         <p class="footer__author" lang="en">&copy; 2022 GameCattt</p>
       </footer>
-      <section class="popup">
+      <div class="popup">
         <div class="popup__container">
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="profile-form" action="#">
-            <input class="profile-form__input" type="text" placeholder="Имя" required />
-            <input class="profile-form__input" type="text" placeholder="О себе" required />
+            <input
+              class="profile-form__input"
+              name="nickname"
+              type="text"
+              placeholder="Имя"
+              required
+            />
+            <input
+              class="profile-form__input"
+              name="description"
+              type="text"
+              placeholder="О себе"
+              required
+            />
             <button class="profile-form__btn-submit">Сохранить</button>
           </form>
           <button class="popup__btn-close">
             <img class="icon" src="./images/icon-close.svg" alt="Закрыть" />
           </button>
         </div>
-      </section>
+      </div>
     </div>
+    <script src="./index.js"></script>
   </body>
 </html>
