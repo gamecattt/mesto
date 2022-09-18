@@ -4,8 +4,6 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/page/__wrapper/page__wrapper.css);
 
-@import url(../blocks/icon/icon.css);
-
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__logo-img/header__logo-img.css);
@@ -22,7 +20,6 @@
 @import url(../blocks/showcase/showcase.css);
 @import url(../blocks/showcase/__list/showcase__list.css);
 
-@import url(../blocks/post/post.css);
 @import url(../blocks/post/__img/post__img.css);
 @import url(../blocks/post/__bar/post__bar.css);
 @import url(../blocks/post/__caption/post__caption.css);

@@ -1,9 +1,15 @@
 .profile__btn-edit {
-  background: transparent;
-  padding: 6px;
+  background-color: transparent;
+  min-width: 24px;
+  min-height: 24px;
   border: 1px solid #fff;
+  padding: 0;
   cursor: pointer;
   transition: opacity 0.2s;
+  background-image: url(../../../images/icon-pencil.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px;
 }
 
 .profile__btn-edit:hover {
@@ -15,6 +21,8 @@
     position: absolute;
     bottom: 11px;
     right: -28px;
-    padding: 3px;
+    min-width: 18px;
+    min-height: 18px;
+    background-size: 7px;
   }
 }

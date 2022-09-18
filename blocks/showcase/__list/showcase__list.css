@@ -5,18 +5,11 @@
   display: grid;
   row-gap: 20px;
   column-gap: 17px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
 }
 
 @media screen and (max-width: 918px) {
   .showcase__list {
-    grid-template-columns: repeat(2, 1fr);
     padding: 0 19px;
-  }
-}
-
-@media screen and (max-width: 620px) {
-  .showcase__list {
-    grid-template-columns: auto;
   }
 }
