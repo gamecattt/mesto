@@ -45,107 +45,72 @@
           <button class="profile__btn-add" type="button" aria-label="Добавить фото"></button>
         </section>
         <section class="showcase">
-          <ul class="showcase__list">
-            <li class="post">
-              <img class="post__img" src="./images/item_1.jpg" alt="Резиденция Деда Мороза" />
-              <div class="post__bar">
-                <h2 class="post__caption">Великий Устюг</h2>
-                <button
-                  class="post__btn-like post__btn-like_active"
-                  type="button"
-                  aria-label="Поставить лайк"
-                ></button>
-              </div>
-            </li>
-            <li class="post">
-              <img class="post__img" src="./images/item_2.jpg" alt="Скалы Три брата" />
-              <div class="post__bar">
-                <h2 class="post__caption">Александровск-Сахалинский</h2>
-                <button
-                  class="post__btn-like post__btn-like_active"
-                  type="button"
-                  aria-label="Поставить лайк"
-                ></button>
-              </div>
-            </li>
-            <li class="post">
-              <img
-                class="post__img"
-                src="./images/item_3.jpg"
-                alt="Мемориал - Защитникам Советского Заполярья"
-              />
-              <div class="post__bar">
-                <h2 class="post__caption">Мурманск</h2>
-                <button
-                  class="post__btn-like post__btn-like_active"
-                  type="button"
-                  aria-label="Поставить лайк"
-                ></button>
-              </div>
-            </li>
-            <li class="post">
-              <img class="post__img" src="./images/item_4.jpg" alt="Белгородский университет" />
-              <div class="post__bar">
-                <h2 class="post__caption">Белгород</h2>
-                <button
-                  class="post__btn-like post__btn-like_active"
-                  type="button"
-                  aria-label="Поставить лайк"
-                ></button>
-              </div>
-            </li>
-            <li class="post">
-              <img class="post__img" src="./images/item_5.jpg" alt="Гора Керосинка" />
-              <div class="post__bar">
-                <h2 class="post__caption">Миасс</h2>
-                <button
-                  class="post__btn-like post__btn-like_active"
-                  type="button"
-                  aria-label="Поставить лайк"
-                ></button>
-              </div>
-            </li>
-            <li class="post">
-              <img class="post__img" src="./images/item_6.jpg" alt="Старый город" />
-              <div class="post__bar">
-                <h2 class="post__caption">Выборг</h2>
-                <button
-                  class="post__btn-like post__btn-like_active"
-                  type="button"
-                  aria-label="Поставить лайк"
-                ></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="showcase__list"></ul>
         </section>
       </main>
       <footer class="footer">
         <p class="footer__author" lang="en">&copy; 2022 GameCattt</p>
       </footer>
-      <div class="popup">
+      <div class="popup" id="profilePopup">
         <div class="popup__container">
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="profile-form" action="#" name="profileForm">
+          <form class="popup-form" action="#" name="profileForm">
             <input
-              class="profile-form__input"
+              class="popup-form__input"
               name="nickname"
               type="text"
               placeholder="Имя"
               required
             />
             <input
-              class="profile-form__input"
+              class="popup-form__input"
               name="description"
               type="text"
               placeholder="О себе"
               required
             />
-            <button class="profile-form__btn-submit" type="submit">Сохранить</button>
+            <button class="popup-form__btn-submit" type="submit">Сохранить</button>
+          </form>
+          <button class="popup__btn-close" type="button" aria-label="Закрыть"></button>
+        </div>
+      </div>
+      <div class="popup" id="newPostPopup">
+        <div class="popup__container">
+          <h3 class="popup__title">Новое место</h3>
+          <form class="popup-form" action="#" name="newPostForm">
+            <input
+              class="popup-form__input"
+              name="title"
+              type="text"
+              placeholder="Название"
+              required
+            />
+            <input
+              class="popup-form__input"
+              name="image-link"
+              type="text"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <button class="popup-form__btn-submit" type="submit">Создать</button>
           </form>
           <button class="popup__btn-close" type="button" aria-label="Закрыть"></button>
         </div>
       </div>
     </div>
+    <template id="post">
+      <li class="post">
+        <img class="post__img" src="" alt="" />
+        <div class="post__bar">
+          <h2 class="post__caption"></h2>
+          <button
+            class="post__btn-like post__btn-like_active"
+            type="button"
+            aria-label="Поставить лайк"
+          ></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

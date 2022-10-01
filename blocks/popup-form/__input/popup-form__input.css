@@ -1,4 +1,4 @@
-.profile-form__input {
+.popup-form__input {
   display: block;
   font-size: 14px;
   line-height: 17px;
@@ -12,6 +12,6 @@
   transition: border-color 0.2s;
 }
 
-.profile-form__input:focus {
+.popup-form__input:focus {
   border-color: #000;
 }
