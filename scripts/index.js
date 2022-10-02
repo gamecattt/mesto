@@ -97,3 +97,11 @@ function addPost(name, link) {
 
   showcaseList.prepend(postElement);
 }
+
+// Likes
+
+showcaseList.addEventListener('click', function (event) {
+  if (event.target.matches('.post__btn-like')) {
+    event.target.classList.toggle('post__btn-like_active');
+  }
+});
