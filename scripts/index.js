@@ -20,9 +20,9 @@ const nicknameInput = profileForm.elements.nickname;
 const descriptionInput = profileForm.elements.description;
 
 profileEditBtn.addEventListener('click', function () {
-  profilePopup.classList.add('popup_opened');
   nicknameInput.value = nickname.textContent.trim();
   descriptionInput.value = description.textContent.trim();
+  profilePopup.classList.add('popup_opened');
 });
 
 profileForm.addEventListener('submit', function (event) {
@@ -98,7 +98,10 @@ function addPost(name, link) {
   showcaseList.prepend(postElement);
 }
 
-// Likes & Trash
+// Post Actions
+const imgPopup = document.getElementById('imagePopup');
+const imgPopupImage = imgPopup.querySelector('.popup-img__image');
+const imgPopupCaption = imgPopup.querySelector('.popup-img__caption');
 
 showcaseList.addEventListener('click', function (event) {
   if (event.target.matches('.post__btn-like')) {
@@ -107,5 +110,12 @@ showcaseList.addEventListener('click', function (event) {
 
   if (event.target.matches('.post__btn-trash')) {
     event.target.parentElement.remove();
+  }
+
+  if (event.target.matches('.post__img')) {
+    imgPopupImage.src = event.target.src;
+    imgPopupImage.alt = event.target.alt;
+    imgPopupCaption.textContent = event.target.alt;
+    imgPopup.classList.add('popup_opened');
   }
 });
