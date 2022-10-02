@@ -98,10 +98,14 @@ function addPost(name, link) {
   showcaseList.prepend(postElement);
 }
 
-// Likes
+// Likes & Trash
 
 showcaseList.addEventListener('click', function (event) {
   if (event.target.matches('.post__btn-like')) {
     event.target.classList.toggle('post__btn-like_active');
+  }
+
+  if (event.target.matches('.post__btn-trash')) {
+    event.target.parentElement.remove();
   }
 });
