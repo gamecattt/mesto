@@ -37,8 +37,18 @@ profileForm.addEventListener('submit', function (event) {
 const addPostBtn = document.querySelector('.profile__btn-add');
 const newPostPopup = document.getElementById('newPostPopup');
 
+const newPostForm = document.forms.newPostForm;
+const nameInput = newPostForm.elements.name;
+const imageLinkInput = newPostForm.elements['image-link'];
+
 addPostBtn.addEventListener('click', function () {
   newPostPopup.classList.add('popup_opened');
+});
+
+newPostForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  addPost(nameInput.value, imageLinkInput.value);
+  newPostPopup.classList.remove('popup_opened');
 });
 
 // Initial Posts
@@ -47,32 +57,26 @@ const initialPosts = [
   {
     name: 'Великий Устюг',
     link: './images/item_1.jpg',
-    alt: 'Резиденция Деда Мороза',
   },
   {
     name: 'Александровск-Сахалинский',
     link: './images/item_2.jpg',
-    alt: 'Скалы Три брата',
   },
   {
     name: 'Мурманск',
     link: './images/item_3.jpg',
-    alt: 'Мемориал - Защитникам Советского Заполярья',
   },
   {
     name: 'Белгород',
     link: './images/item_4.jpg',
-    alt: 'Белгородский университет',
   },
   {
     name: 'Миасс',
     link: './images/item_5.jpg',
-    alt: 'Гора Керосинка',
   },
   {
     name: 'Выборг',
     link: './images/item_6.jpg',
-    alt: 'Старый город',
   },
 ];
 
@@ -80,12 +84,16 @@ const postTemplate = document.querySelector('#post').content;
 const showcaseList = document.querySelector('.showcase__list');
 
 initialPosts.forEach(function (post) {
+  addPost(post.name, post.link);
+});
+
+function addPost(name, link) {
   const postElement = postTemplate.querySelector('.post').cloneNode(true);
   const postImgElement = postElement.querySelector('.post__img');
 
-  postImgElement.src = post.link;
-  postImgElement.alt = post.alt;
-  postElement.querySelector('.post__caption').textContent = post.name;
+  postImgElement.src = link;
+  postImgElement.alt = name;
+  postElement.querySelector('.post__caption').textContent = name;
 
-  showcaseList.append(postElement);
-});
+  showcaseList.prepend(postElement);
+}
