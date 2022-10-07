@@ -78,14 +78,14 @@ profileForm.addEventListener('submit', function (event) {
 });
 
 addPostBtn.addEventListener('click', function () {
-  nameInput.value = '';
-  imageLinkInput.value = '';
+  newPostForm.reset();
   openPopup(newPostPopup);
 });
 
 newPostForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  addPost(nameInput.value, imageLinkInput.value);
+  const postElement = createPost(nameInput.value, imageLinkInput.value);
+  addPost(postElement);
   closePopup(newPostPopup);
 });
 
