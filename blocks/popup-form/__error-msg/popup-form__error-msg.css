@@ -1,0 +1,8 @@
+.popup-form__error-msg {
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  min-height: 15px;
+  display: block;
+  margin-bottom: 11px;
+}
