@@ -90,10 +90,22 @@ newPostForm.addEventListener('submit', function (event) {
 });
 
 popups.forEach(function (popup) {
-  const closeBtn = popup.querySelector('.popup__btn-close');
-  closeBtn.addEventListener('click', function () {
-    closePopup(popup);
+  popup.addEventListener('click', function (event) {
+    if (
+      event.target.classList.contains('popup') ||
+      event.target.classList.contains('popup__btn-close')
+    ) {
+      closePopup(popup);
+    }
   });
+});
+
+document.addEventListener('keyup', function (event) {
+  if (event.key === 'Escape') {
+    popups.forEach(function (popup) {
+      closePopup(popup);
+    });
+  }
 });
 
 initialPosts.forEach(function (post) {
