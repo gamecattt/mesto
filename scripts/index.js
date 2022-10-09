@@ -119,7 +119,5 @@ enableValidation({
   formSelector: '.popup-form',
   inputSelector: '.popup-form__input',
   submitButtonSelector: '.popup-form__btn-submit',
-  // inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup-form__input_type_error',
-  // errorClass: 'popup__error_visible',
 });
