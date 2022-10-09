@@ -1,5 +1,4 @@
 const popups = document.querySelectorAll('.popup');
-const forms = document.querySelectorAll('.popup-form');
 
 const profileEditBtn = document.querySelector('.profile__btn-edit');
 const profilePopup = document.getElementById('profilePopup');
@@ -69,6 +68,7 @@ profileEditBtn.addEventListener('click', function () {
   nicknameInput.value = nickname.textContent.trim();
   descriptionInput.value = description.textContent.trim();
   openPopup(profilePopup);
+  enableValidation.validateForm(profileForm);
 });
 
 profileForm.addEventListener('submit', function (event) {
@@ -81,6 +81,7 @@ profileForm.addEventListener('submit', function (event) {
 addPostBtn.addEventListener('click', function () {
   newPostForm.reset();
   openPopup(newPostPopup);
+  enableValidation.validateForm(newPostForm);
 });
 
 newPostForm.addEventListener('submit', function (event) {
@@ -97,24 +98,16 @@ popups.forEach(function (popup) {
   });
 });
 
-forms.forEach(function (form) {
-  const submitBtn = form.querySelector('.popup-form__btn-submit');
-  const inputList = form.querySelectorAll('.popup-form__input');
-  inputList.forEach(function (input) {
-    input.addEventListener('input', function () {
-      input.nextElementSibling.textContent = input.validationMessage;
-      if (input.validationMessage) {
-        input.classList.add('popup-form__input_type_error');
-      } else {
-        input.classList.remove('popup-form__input_type_error');
-      }
-    });
-  });
-});
-
-function validateForm(form) {}
-
 initialPosts.forEach(function (post) {
   const postElement = createPost(post.name, post.link);
   addPost(postElement);
+});
+
+enableValidation({
+  formSelector: '.popup-form',
+  inputSelector: '.popup-form__input',
+  submitButtonSelector: '.popup-form__btn-submit',
+  // inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup-form__input_type_error',
+  // errorClass: 'popup__error_visible',
 });
