@@ -63,8 +63,9 @@
               required
               minlength="2"
               maxlength="40"
+              id="nickname-input"
             />
-            <span class="popup-form__error-msg"></span>
+            <span class="popup-form__error-msg nickname-input-error"></span>
             <input
               class="popup-form__input"
               name="description"
@@ -73,8 +74,9 @@
               required
               minlength="2"
               maxlength="200"
+              id="description-input"
             />
-            <span class="popup-form__error-msg"></span>
+            <span class="popup-form__error-msg description-input-error"></span>
             <button class="popup-form__btn-submit" type="submit">Сохранить</button>
           </form>
           <button class="popup__btn-close" type="button" aria-label="Закрыть"></button>
@@ -92,16 +94,18 @@
               required
               minlength="2"
               maxlength="30"
+              id="name-input"
             />
-            <span class="popup-form__error-msg"></span>
+            <span class="popup-form__error-msg name-input-error"></span>
             <input
               class="popup-form__input"
               name="image-link"
               type="url"
               placeholder="Ссылка на картинку"
               required
+              id="image-link-input"
             />
-            <span class="popup-form__error-msg"></span>
+            <span class="popup-form__error-msg image-link-input-error"></span>
             <button class="popup-form__btn-submit" type="submit">Создать</button>
           </form>
           <button class="popup__btn-close" type="button" aria-label="Закрыть"></button>

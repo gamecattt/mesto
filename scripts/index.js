@@ -9,7 +9,7 @@ const profileForm = document.forms.profileForm;
 const nicknameInput = profileForm.elements.nickname;
 const descriptionInput = profileForm.elements.description;
 
-const addPostBtn = document.querySelector('.profile__btn-add');
+const postAddBtn = document.querySelector('.profile__btn-add');
 const newPostPopup = document.getElementById('newPostPopup');
 
 const newPostForm = document.forms.newPostForm;
@@ -23,12 +23,21 @@ const imgPopup = document.getElementById('imagePopup');
 const imgPopupImage = imgPopup.querySelector('.popup-img__image');
 const imgPopupCaption = imgPopup.querySelector('.popup-img__caption');
 
+const keyupHandler = function (event) {
+  if (event.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
+};
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keyup', keyupHandler);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keyup', keyupHandler);
 }
 
 function createPost(name, link) {
@@ -51,9 +60,9 @@ function createPost(name, link) {
   });
 
   postImg.addEventListener('click', function () {
-    imgPopupImage.src = postImg.src;
-    imgPopupImage.alt = postImg.alt;
-    imgPopupCaption.textContent = postImg.alt;
+    imgPopupImage.src = link;
+    imgPopupImage.alt = name;
+    imgPopupCaption.textContent = name;
     openPopup(imgPopup);
   });
 
@@ -68,7 +77,7 @@ profileEditBtn.addEventListener('click', function () {
   nicknameInput.value = nickname.textContent.trim();
   descriptionInput.value = description.textContent.trim();
   openPopup(profilePopup);
-  enableValidation.validateForm(profileForm);
+  enableValidation.reset(profileForm);
 });
 
 profileForm.addEventListener('submit', function (event) {
@@ -78,10 +87,10 @@ profileForm.addEventListener('submit', function (event) {
   closePopup(profilePopup);
 });
 
-addPostBtn.addEventListener('click', function () {
+postAddBtn.addEventListener('click', function () {
   newPostForm.reset();
   openPopup(newPostPopup);
-  enableValidation.validateForm(newPostForm);
+  enableValidation.reset(newPostForm);
 });
 
 newPostForm.addEventListener('submit', function (event) {
@@ -100,14 +109,6 @@ popups.forEach(function (popup) {
       closePopup(popup);
     }
   });
-});
-
-document.addEventListener('keyup', function (event) {
-  if (event.key === 'Escape') {
-    popups.forEach(function (popup) {
-      closePopup(popup);
-    });
-  }
 });
 
 initialPosts.forEach(function (post) {
