@@ -23,6 +23,13 @@ const imgPopup = document.getElementById('imagePopup');
 const imgPopupImage = imgPopup.querySelector('.popup-img__image');
 const imgPopupCaption = imgPopup.querySelector('.popup-img__caption');
 
+const validationConfig = {
+  formSelector: '.popup-form',
+  inputSelector: '.popup-form__input',
+  submitButtonSelector: '.popup-form__btn-submit',
+  inputErrorClass: 'popup-form__input_type_error',
+};
+
 const keyupHandler = function (event) {
   if (event.key === 'Escape') {
     const popup = document.querySelector('.popup_opened');
@@ -77,7 +84,7 @@ profileEditBtn.addEventListener('click', function () {
   nicknameInput.value = nickname.textContent.trim();
   descriptionInput.value = description.textContent.trim();
   openPopup(profilePopup);
-  enableValidation.reset(profileForm);
+  clearValidation(profileForm, validationConfig);
 });
 
 profileForm.addEventListener('submit', function (event) {
@@ -90,7 +97,7 @@ profileForm.addEventListener('submit', function (event) {
 postAddBtn.addEventListener('click', function () {
   newPostForm.reset();
   openPopup(newPostPopup);
-  enableValidation.reset(newPostForm);
+  clearValidation(newPostForm, validationConfig);
 });
 
 newPostForm.addEventListener('submit', function (event) {
@@ -116,9 +123,4 @@ initialPosts.forEach(function (post) {
   addPost(postElement);
 });
 
-enableValidation({
-  formSelector: '.popup-form',
-  inputSelector: '.popup-form__input',
-  submitButtonSelector: '.popup-form__btn-submit',
-  inputErrorClass: 'popup-form__input_type_error',
-});
+enableValidation(validationConfig);

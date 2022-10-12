@@ -1,44 +1,43 @@
-function enableValidation(config) {
+const enableValidation = function (config) {
   const forms = document.querySelectorAll(config.formSelector);
-
   forms.forEach(function (form) {
-    const inputList = form.querySelectorAll(config.inputSelector);
-    inputList.forEach(function (input) {
-      input.addEventListener('input', function () {
-        enableValidation.validateInput(input);
-        enableValidation.validateForm(form);
-      });
+    setEventListeners(form, config);
+  });
+};
+
+const setEventListeners = function (form, config) {
+  const inputList = Array.from(form.querySelectorAll(config.inputSelector));
+  inputList.forEach(function (input) {
+    input.addEventListener('input', function () {
+      validateInput(input, config);
+      toggleButtonState(form, inputList, config);
     });
   });
+};
 
-  enableValidation.validateForm = function (form) {
-    let isValid = true;
-    const submitBtn = form.querySelector(config.submitButtonSelector);
-    const inputList = form.querySelectorAll(config.inputSelector);
-    inputList.forEach(function (input) {
-      if (!input.validity.valid) {
-        isValid = false;
-      }
-    });
-    submitBtn.disabled = !isValid;
-  };
+const clearValidation = function (form, config) {
+  const inputList = Array.from(form.querySelectorAll(config.inputSelector));
+  inputList.forEach(function (input) {
+    document.querySelector(`.${input.id}-error`).textContent = '';
+    input.classList.remove(config.inputErrorClass);
+  });
+  toggleButtonState(form, inputList, config);
+};
 
-  enableValidation.validateInput = function (input) {
-    const errorEl = document.querySelector(`.${input.id}-error`);
-    errorEl.textContent = input.validationMessage;
-    if (input.validationMessage) {
-      input.classList.add(config.inputErrorClass);
-    } else {
-      input.classList.remove(config.inputErrorClass);
-    }
-  };
+const toggleButtonState = function (form, inputList, config) {
+  const submitBtn = form.querySelector(config.submitButtonSelector);
+  const hasInvalidInput = inputList.some(function (input) {
+    return !input.validity.valid;
+  });
+  submitBtn.disabled = hasInvalidInput;
+};
 
-  enableValidation.reset = function (form) {
-    const inputList = form.querySelectorAll(config.inputSelector);
-    inputList.forEach(function (input) {
-      const errorEl = document.querySelector(`.${input.id}-error`);
-      errorEl.textContent = '';
-      input.classList.remove(config.inputErrorClass);
-    });
-  };
-}
+const validateInput = function (input, config) {
+  const errorEl = document.querySelector(`.${input.id}-error`);
+  errorEl.textContent = input.validationMessage;
+  if (input.validationMessage) {
+    input.classList.add(config.inputErrorClass);
+  } else {
+    input.classList.remove(config.inputErrorClass);
+  }
+};
