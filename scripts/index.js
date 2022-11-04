@@ -1,3 +1,7 @@
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
+import { initialPosts } from './initialPosts.js';
+
 const popups = document.querySelectorAll('.popup');
 
 const profileEditBtn = document.querySelector('.profile__btn-edit');
@@ -16,12 +20,7 @@ const newPostForm = document.forms.newPostForm;
 const nameInput = newPostForm.elements.name;
 const imageLinkInput = newPostForm.elements['image-link'];
 
-const postTemplate = document.querySelector('#post').content;
 const showcaseList = document.querySelector('.showcase__list');
-
-const imgPopup = document.getElementById('imagePopup');
-const imgPopupImage = imgPopup.querySelector('.popup-img__image');
-const imgPopupCaption = imgPopup.querySelector('.popup-img__caption');
 
 const validationConfig = {
   formSelector: '.popup-form',
@@ -29,6 +28,9 @@ const validationConfig = {
   submitButtonSelector: '.popup-form__btn-submit',
   inputErrorClass: 'popup-form__input_type_error',
 };
+
+const profileFormValidator = new FormValidator(validationConfig, profileForm);
+const newPostFormValidator = new FormValidator(validationConfig, newPostForm);
 
 const keyupHandler = function (event) {
   if (event.key === 'Escape') {
@@ -47,35 +49,6 @@ function closePopup(popup) {
   document.removeEventListener('keyup', keyupHandler);
 }
 
-function createPost(name, link) {
-  const postElement = postTemplate.querySelector('.post').cloneNode(true);
-  const postImgElement = postElement.querySelector('.post__img');
-  const likeBtn = postElement.querySelector('.post__btn-like');
-  const trashBtn = postElement.querySelector('.post__btn-trash');
-  const postImg = postElement.querySelector('.post__img');
-
-  postImgElement.src = link;
-  postImgElement.alt = name;
-  postElement.querySelector('.post__caption').textContent = name;
-
-  likeBtn.addEventListener('click', function () {
-    likeBtn.classList.toggle('post__btn-like_active');
-  });
-
-  trashBtn.addEventListener('click', function () {
-    trashBtn.parentElement.remove();
-  });
-
-  postImg.addEventListener('click', function () {
-    imgPopupImage.src = link;
-    imgPopupImage.alt = name;
-    imgPopupCaption.textContent = name;
-    openPopup(imgPopup);
-  });
-
-  return postElement;
-}
-
 function addPost(postElement) {
   showcaseList.prepend(postElement);
 }
@@ -84,7 +57,7 @@ profileEditBtn.addEventListener('click', function () {
   nicknameInput.value = nickname.textContent.trim();
   descriptionInput.value = description.textContent.trim();
   openPopup(profilePopup);
-  clearValidation(profileForm, validationConfig);
+  profileFormValidator.clearValidation();
 });
 
 profileForm.addEventListener('submit', function (event) {
@@ -97,12 +70,20 @@ profileForm.addEventListener('submit', function (event) {
 postAddBtn.addEventListener('click', function () {
   newPostForm.reset();
   openPopup(newPostPopup);
-  clearValidation(newPostForm, validationConfig);
+  newPostFormValidator.clearValidation();
 });
 
 newPostForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  const postElement = createPost(nameInput.value, imageLinkInput.value);
+  const card = new Card(
+    {
+      name: nameInput.value,
+      link: imageLinkInput.value,
+    },
+    '#post',
+    openPopup
+  );
+  const postElement = card.generateCard();
   addPost(postElement);
   closePopup(newPostPopup);
 });
@@ -119,8 +100,10 @@ popups.forEach(function (popup) {
 });
 
 initialPosts.forEach(function (post) {
-  const postElement = createPost(post.name, post.link);
+  const card = new Card(post, '#post', openPopup);
+  const postElement = card.generateCard();
   addPost(postElement);
 });
 
-enableValidation(validationConfig);
+profileFormValidator.enableValidation();
+newPostFormValidator.enableValidation();
