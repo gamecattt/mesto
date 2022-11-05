@@ -16,6 +16,10 @@ const descriptionInput = profileForm.elements.description;
 const postAddBtn = document.querySelector('.profile__btn-add');
 const newPostPopup = document.getElementById('newPostPopup');
 
+const imgPopup = document.getElementById('imagePopup');
+const imgPopupImage = imgPopup.querySelector('.popup-img__image');
+const imgPopupCaption = imgPopup.querySelector('.popup-img__caption');
+
 const newPostForm = document.forms.newPostForm;
 const nameInput = newPostForm.elements.name;
 const imageLinkInput = newPostForm.elements['image-link'];
@@ -29,24 +33,40 @@ const validationConfig = {
   inputErrorClass: 'popup-form__input_type_error',
 };
 
-const profileFormValidator = new FormValidator(validationConfig, profileForm);
-const newPostFormValidator = new FormValidator(validationConfig, newPostForm);
+const formValidators = {};
+const forms = Array.from(document.querySelectorAll(validationConfig.formSelector));
+forms.forEach(function (form) {
+  const formValidator = new FormValidator(validationConfig, form);
+  formValidator.enableValidation();
+  formValidators[form.getAttribute('name')] = formValidator;
+});
 
-const keyupHandler = function (event) {
+const handleEscape = function (event) {
   if (event.key === 'Escape') {
     const popup = document.querySelector('.popup_opened');
     closePopup(popup);
   }
 };
 
+function handleCardClick(name, link) {
+  imgPopupImage.src = link;
+  imgPopupImage.alt = name;
+  imgPopupCaption.textContent = name;
+}
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keyup', keyupHandler);
+  document.addEventListener('keyup', handleEscape);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keyup', keyupHandler);
+  document.removeEventListener('keyup', handleEscape);
+}
+
+function createCard(data) {
+  const card = new Card(data, '#post', openPopup, handleCardClick);
+  return card.generateCard();
 }
 
 function addPost(postElement) {
@@ -57,7 +77,7 @@ profileEditBtn.addEventListener('click', function () {
   nicknameInput.value = nickname.textContent.trim();
   descriptionInput.value = description.textContent.trim();
   openPopup(profilePopup);
-  profileFormValidator.clearValidation();
+  formValidators[profileForm.getAttribute('name')].clearValidation();
 });
 
 profileForm.addEventListener('submit', function (event) {
@@ -70,20 +90,15 @@ profileForm.addEventListener('submit', function (event) {
 postAddBtn.addEventListener('click', function () {
   newPostForm.reset();
   openPopup(newPostPopup);
-  newPostFormValidator.clearValidation();
+  formValidators[newPostForm.getAttribute('name')].clearValidation();
 });
 
 newPostForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  const card = new Card(
-    {
-      name: nameInput.value,
-      link: imageLinkInput.value,
-    },
-    '#post',
-    openPopup
-  );
-  const postElement = card.generateCard();
+  const postElement = createCard({
+    name: nameInput.value,
+    link: imageLinkInput.value,
+  });
   addPost(postElement);
   closePopup(newPostPopup);
 });
@@ -100,10 +115,6 @@ popups.forEach(function (popup) {
 });
 
 initialPosts.forEach(function (post) {
-  const card = new Card(post, '#post', openPopup);
-  const postElement = card.generateCard();
+  const postElement = createCard(post);
   addPost(postElement);
 });
-
-profileFormValidator.enableValidation();
-newPostFormValidator.enableValidation();

@@ -1,9 +1,10 @@
 export class Card {
-  constructor(data, templateSelector, openPopup) {
+  constructor(data, templateSelector, openPopup, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._openPopup = openPopup;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -24,14 +25,8 @@ export class Card {
       trashBtn.parentElement.remove();
     });
 
-    const imgPopup = document.getElementById('imagePopup');
-    const imgPopupImage = imgPopup.querySelector('.popup-img__image');
-    const imgPopupCaption = imgPopup.querySelector('.popup-img__caption');
-
     postImg.addEventListener('click', () => {
-      imgPopupImage.src = this._link;
-      imgPopupImage.alt = this._name;
-      imgPopupCaption.textContent = this._name;
+      this._handleCardClick(this._name, this._link);
       this._openPopup(imgPopup);
     });
   }
