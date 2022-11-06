@@ -52,6 +52,7 @@ function handleCardClick(name, link) {
   imgPopupImage.src = link;
   imgPopupImage.alt = name;
   imgPopupCaption.textContent = name;
+  openPopup(imgPopup);
 }
 
 function openPopup(popup) {
@@ -65,7 +66,7 @@ function closePopup(popup) {
 }
 
 function createCard(data) {
-  const card = new Card(data, '#post', openPopup, handleCardClick);
+  const card = new Card(data, '#post', handleCardClick);
   return card.generateCard();
 }
 
