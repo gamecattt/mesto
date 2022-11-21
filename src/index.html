@@ -7,8 +7,7 @@
     <meta name="description" content="Фотогалерея красивых мест в России" />
     <meta name="keywords" content="место, Россия, места в России, красивые фото" />
     <title>Mesto</title>
-    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="<%= require('./favicon.ico') %>" />
   </head>
   <body class="page">
     <!-- 
@@ -23,12 +22,16 @@
     <div class="page__wrapper">
       <header class="header">
         <a class="header__logo" href="#">
-          <img class="header__logo-img" src="./images/logo.svg" alt="Место" />
+          <img class="header__logo-img" src="<%= require('./images/logo.svg') %>" alt="Место" />
         </a>
       </header>
       <main class="content">
         <section class="profile">
-          <img class="profile__avatar" src="./images/avatar.jpg" alt="Жак-Ив Кусто" />
+          <img
+            class="profile__avatar"
+            src="<%= require('./images/avatar.jpg') %>"
+            alt="Жак-Ив Кусто"
+          />
           <div class="profile__info">
             <div class="profile__heading">
               <h1 class="profile__nickname">GameCattt</h1>
@@ -115,13 +118,13 @@
     <div class="popup popup_for_img" id="imagePopup">
       <div class="popup-img">
         <button class="popup__btn-close" type="button" aria-label="Закрыть"></button>
-        <img class="popup-img__image" src="./images/item_2.jpg" alt="" />
+        <img class="popup-img__image" src="<%= require('./images/item_2.jpg') %>" alt="" />
         <p class="popup-img__caption"></p>
       </div>
     </div>
     <template id="post">
       <li class="post">
-        <img class="post__img" src="./images/item_2.jpg" alt="" />
+        <img class="post__img" src="<%= require('./images/item_2.jpg') %>" alt="" />
         <button class="post__btn-trash" type="button" aria-label="Удалить"></button>
         <div class="post__bar">
           <h2 class="post__caption"></h2>
@@ -129,6 +132,5 @@
         </div>
       </li>
     </template>
-    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
