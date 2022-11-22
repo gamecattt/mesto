@@ -11,26 +11,33 @@ export class Card {
     return postTemplate.querySelector('.post').cloneNode(true);
   }
 
+  _handleLike() {
+    this._likeBtn.classList.toggle('post__btn-like_active');
+  }
+
+  _handleTrash() {
+    this._element.remove();
+  }
+
   _setEventListeners() {
-    const likeBtn = this._element.querySelector('.post__btn-like');
-    const trashBtn = this._element.querySelector('.post__btn-trash');
-    const postImg = this._element.querySelector('.post__img');
-
-    likeBtn.addEventListener('click', () => {
-      likeBtn.classList.toggle('post__btn-like_active');
+    this._likeBtn.addEventListener('click', () => {
+      this._handleLike();
     });
 
-    trashBtn.addEventListener('click', () => {
-      trashBtn.parentElement.remove();
+    this._trashBtn.addEventListener('click', () => {
+      this._handleTrash();
     });
 
-    postImg.addEventListener('click', () => {
+    this._postImg.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
     });
   }
 
   generateCard() {
     this._element = this._getTemplate();
+    this._likeBtn = this._element.querySelector('.post__btn-like');
+    this._trashBtn = this._element.querySelector('.post__btn-trash');
+    this._postImg = this._element.querySelector('.post__img');
     this._setEventListeners();
 
     const postImgElement = this._element.querySelector('.post__img');

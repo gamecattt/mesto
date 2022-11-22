@@ -3,11 +3,22 @@ import './pages/index.css';
 import { PopupWithImage } from './scripts/PopupWithImage.js';
 import { Card } from './scripts/Card.js';
 import { FormValidator } from './scripts/FormValidator.js';
-import { initialPosts } from './scripts/initialPosts.js';
+import { initialPosts, validationConfig } from './scripts/constants.js';
 import { PopupWithForm } from './scripts/PopupWithForm.js';
 import { UserInfo } from './scripts/UserInfo.js';
+import { Section } from './scripts/Section';
 
-const showcaseList = document.querySelector('.showcase__list');
+const postsSection = new Section(
+  {
+    items: initialPosts,
+    renderer: (post) => {
+      const postElement = createCard(post);
+      addPost(postElement);
+    },
+  },
+  '.showcase__list'
+);
+
 const userInfo = new UserInfo('.profile__nickname', '.profile__description');
 const imgPopup = new PopupWithImage('#imagePopup');
 
@@ -21,18 +32,12 @@ const newPostPopup = new PopupWithForm('#newPostPopup', (data) => {
   addPost(createCard(data));
 });
 
-const validationConfig = {
-  formSelector: '.popup-form',
-  inputSelector: '.popup-form__input',
-  submitButtonSelector: '.popup-form__btn-submit',
-  inputErrorClass: 'popup-form__input_type_error',
-};
-
 const formValidators = {};
 const forms = Array.from(document.querySelectorAll(validationConfig.formSelector));
 forms.forEach(function (form) {
   const formValidator = new FormValidator(validationConfig, form);
   formValidator.enableValidation();
+  ('');
   formValidators[form.getAttribute('name')] = formValidator;
 });
 
@@ -46,7 +51,7 @@ function createCard(data) {
 }
 
 function addPost(postElement) {
-  showcaseList.prepend(postElement);
+  postsSection.addItem(postElement);
 }
 
 profileEditBtn.addEventListener('click', function () {
@@ -60,7 +65,4 @@ postAddBtn.addEventListener('click', function () {
   formValidators['newPostForm'].clearValidation();
 });
 
-initialPosts.forEach(function (post) {
-  const postElement = createCard(post);
-  addPost(postElement);
-});
+postsSection.renderItems();

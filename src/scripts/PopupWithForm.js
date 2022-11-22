@@ -9,18 +9,20 @@ export class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    return Array.from(this._form.elements).filter(el => el.tagName === 'INPUT').reduce((acc, el) => ({
-      ...acc,
-      [el.name]: el.value,
-    }), {});
+    return Array.from(this._form.elements)
+      .filter((el) => el.tagName === 'INPUT')
+      .reduce((acc, el) => {
+        acc[el.name] = el.value;
+        return acc;
+      }, {});
   }
 
   setInputValues(data) {
-    Array.from(this._form.elements).forEach(el => {
+    Array.from(this._form.elements).forEach((el) => {
       if (data.hasOwnProperty(el.name)) {
         el.value = data[el.name];
       }
-    })
+    });
   }
 
   setEventListeners() {

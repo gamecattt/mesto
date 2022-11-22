@@ -5,18 +5,21 @@ export class Popup {
 
   open() {
     this._popup.classList.add('popup_opened');
-    document.addEventListener('keyup', this._handleEscClose);
+    document.addEventListener('keyup', (event) => {
+      this._handleEscClose(event);
+    });
   }
 
   close() {
     this._popup.classList.remove('popup_opened');
-    document.removeEventListener('keyup', this._handleEscClose);
+    document.removeEventListener('keyup', (event) => {
+      this._handleEscClose(event);
+    });
   }
 
   _handleEscClose(event) {
     if (event.key === 'Escape') {
-      const popup = document.querySelector('.popup_opened');
-      this.close(popup);
+      this.close();
     }
   }
 
@@ -26,7 +29,7 @@ export class Popup {
         event.target.classList.contains('popup') ||
         event.target.classList.contains('popup__btn-close')
       ) {
-        this.close(this._popup);
+        this.close();
       }
     });
   }

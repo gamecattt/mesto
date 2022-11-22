@@ -14,5 +14,8 @@
 - BEM
 - GIT
 - DOM
+- NPM
+- Webpack
+- OOP
 
 [Ссылка на проект](https://gamecattt.github.io/mesto)
