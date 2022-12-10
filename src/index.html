@@ -69,9 +69,9 @@
               required
               minlength="2"
               maxlength="40"
-              id="name-input"
+              id="nickname-input"
             />
-            <span class="popup-form__error-msg name-input-error"></span>
+            <span class="popup-form__error-msg nickname-input-error"></span>
             <input
               class="popup-form__input"
               name="about"
@@ -135,22 +135,21 @@
       </div>
     </div>
     <div class="popup popup_avatar" id="avatarPopup">
-        <div class="popup__container">
-          <h3 class="popup__title">Обновить аватар</h3>
-          <form class="popup-form" action="#" name="avatarForm" novalidate>
-            <input
-              class="popup-form__input"
-              name="avatar"
-              type="url"
-              placeholder="Ссылка на картинку"
-              required
-              id="avatar-input"
-            />
-            <span class="popup-form__error-msg avatar-input-error"></span>
-            <button class="popup-form__btn-submit" type="submit">Сохранить</button>
-          </form>
-          <button class="popup__btn-close" type="button" aria-label="Закрыть"></button>
-        </div>
+      <div class="popup__container">
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup-form" action="#" name="avatarForm" novalidate>
+          <input
+            class="popup-form__input"
+            name="avatar"
+            type="url"
+            placeholder="Ссылка на картинку"
+            required
+            id="avatar-input"
+          />
+          <span class="popup-form__error-msg avatar-input-error"></span>
+          <button class="popup-form__btn-submit" type="submit">Сохранить</button>
+        </form>
+        <button class="popup__btn-close" type="button" aria-label="Закрыть"></button>
       </div>
     </div>
     <template id="post">
