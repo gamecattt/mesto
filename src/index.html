@@ -27,11 +27,14 @@
       </header>
       <main class="content">
         <section class="profile">
-          <img
-            class="profile__avatar"
-            src="<%= require('./images/avatar.jpg') %>"
-            alt="Жак-Ив Кусто"
-          />
+          <div class="profile__avatar">
+            <img
+              class="profile__avatar-img"
+              src="<%= require('./images/avatar.jpg') %>"
+              alt="Жак-Ив Кусто"
+            />
+            <button class="profile__avatar-edit" type="button" aria-label="Изменить фото"></button>
+          </div>
           <div class="profile__info">
             <div class="profile__heading">
               <h1 class="profile__nickname">GameCattt</h1>
@@ -60,26 +63,26 @@
           <form class="popup-form" action="#" name="profileForm" novalidate>
             <input
               class="popup-form__input"
-              name="nickname"
+              name="name"
               type="text"
               placeholder="Имя"
               required
               minlength="2"
               maxlength="40"
-              id="nickname-input"
+              id="name-input"
             />
-            <span class="popup-form__error-msg nickname-input-error"></span>
+            <span class="popup-form__error-msg name-input-error"></span>
             <input
               class="popup-form__input"
-              name="description"
+              name="about"
               type="text"
               placeholder="О себе"
               required
               minlength="2"
               maxlength="200"
-              id="description-input"
+              id="about-input"
             />
-            <span class="popup-form__error-msg description-input-error"></span>
+            <span class="popup-form__error-msg about-input-error"></span>
             <button class="popup-form__btn-submit" type="submit">Сохранить</button>
           </form>
           <button class="popup__btn-close" type="button" aria-label="Закрыть"></button>
@@ -102,13 +105,13 @@
             <span class="popup-form__error-msg name-input-error"></span>
             <input
               class="popup-form__input"
-              name="image-link"
+              name="link"
               type="url"
               placeholder="Ссылка на картинку"
               required
-              id="image-link-input"
+              id="link-input"
             />
-            <span class="popup-form__error-msg image-link-input-error"></span>
+            <span class="popup-form__error-msg link-input-error"></span>
             <button class="popup-form__btn-submit" type="submit">Создать</button>
           </form>
           <button class="popup__btn-close" type="button" aria-label="Закрыть"></button>
@@ -122,13 +125,44 @@
         <p class="popup-img__caption"></p>
       </div>
     </div>
+    <div class="popup popup_confirm" id="confirmPopup">
+      <div class="popup__container">
+        <h3 class="popup__title">Вы уверены?</h3>
+        <form class="popup-form" action="#" name="confirmForm" novalidate>
+          <button class="popup-form__btn-submit" type="submit">Да</button>
+        </form>
+        <button class="popup__btn-close" type="button" aria-label="Закрыть"></button>
+      </div>
+    </div>
+    <div class="popup popup_avatar" id="avatarPopup">
+        <div class="popup__container">
+          <h3 class="popup__title">Обновить аватар</h3>
+          <form class="popup-form" action="#" name="avatarForm" novalidate>
+            <input
+              class="popup-form__input"
+              name="avatar"
+              type="url"
+              placeholder="Ссылка на картинку"
+              required
+              id="avatar-input"
+            />
+            <span class="popup-form__error-msg avatar-input-error"></span>
+            <button class="popup-form__btn-submit" type="submit">Сохранить</button>
+          </form>
+          <button class="popup__btn-close" type="button" aria-label="Закрыть"></button>
+        </div>
+      </div>
+    </div>
     <template id="post">
       <li class="post">
         <img class="post__img" src="#" alt="" />
         <button class="post__btn-trash" type="button" aria-label="Удалить"></button>
         <div class="post__bar">
           <h2 class="post__caption"></h2>
-          <button class="post__btn-like" type="button" aria-label="Поставить лайк"></button>
+          <div class="post__likes">
+            <button class="post__btn-like" type="button" aria-label="Поставить лайк"></button>
+            <span class="post__total-likes"></span>
+          </div>
         </div>
       </li>
     </template>
