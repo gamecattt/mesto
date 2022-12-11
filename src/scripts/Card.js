@@ -1,7 +1,5 @@
-import { PopupWithForm } from './PopupWithForm.js';
-
 export class Card {
-  constructor(data, templateSelector, handleCardClick, api) {
+  constructor(data, templateSelector, handleCardClick, api, userId, openConfirm) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
@@ -10,6 +8,8 @@ export class Card {
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._api = api;
+    this._userId = userId;
+    this._openConfirm = openConfirm;
   }
 
   _getTemplate() {
@@ -18,40 +18,15 @@ export class Card {
   }
 
   _handleLike() {
-    if (!this._likeBtn.classList.contains('post__btn-like_active')) {
-      this._api
-        .like(this._id)
-        .then((data) => {
-          this._element.querySelector('.post__total-likes').textContent = data.likes.length;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      this._api
-        .dislike(this._id)
-        .then((data) => {
-          this._element.querySelector('.post__total-likes').textContent = data.likes.length;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    this._likeBtn.classList.toggle('post__btn-like_active');
-  }
-
-  _handleTrash() {
-    const confirmPopup = new PopupWithForm('#confirmPopup', () => {
-      this._api
-        .deletePost(this._id)
-        .then(() => {
-          this._element.remove();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
-    confirmPopup.open();
+    this._api
+      .toggleLike(this._id, this._likeBtn.classList.contains('post__btn-like_active'))
+      .then((data) => {
+        this._totalLikes.textContent = data.likes.length;
+        this._likeBtn.classList.toggle('post__btn-like_active');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   _setEventListeners() {
@@ -60,7 +35,7 @@ export class Card {
     });
 
     this._trashBtn.addEventListener('click', () => {
-      this._handleTrash();
+      this._openConfirm(this._id, this._element);
     });
 
     this._postImg.addEventListener('click', () => {
@@ -73,6 +48,7 @@ export class Card {
     this._likeBtn = this._element.querySelector('.post__btn-like');
     this._trashBtn = this._element.querySelector('.post__btn-trash');
     this._postImg = this._element.querySelector('.post__img');
+    this._totalLikes = this._element.querySelector('.post__total-likes');
     this._setEventListeners();
 
     const postImgElement = this._element.querySelector('.post__img');
@@ -81,12 +57,12 @@ export class Card {
     this._element.querySelector('.post__caption').textContent = this._name;
     this._element.querySelector('.post__total-likes').textContent = this._likes.length;
 
-    const isLiked = this._likes.find((like) => like._id === 'bc9f3d96fc937a85c6ec8ae4');
+    const isLiked = this._likes.find((like) => like._id === this._userId);
     if (isLiked) {
       this._likeBtn.classList.add('post__btn-like_active');
     }
 
-    if (this._ownerId != 'bc9f3d96fc937a85c6ec8ae4') {
+    if (this._ownerId != this._userId) {
       this._trashBtn.remove();
     }
 

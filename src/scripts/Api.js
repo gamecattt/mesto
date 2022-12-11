@@ -24,12 +24,8 @@ export class Api {
     return this._request(`/cards/${cardId}`, 'DELETE');
   }
 
-  like(cardId) {
-    return this._request(`/cards/${cardId}/likes`, 'PUT');
-  }
-
-  dislike(cardId) {
-    return this._request(`/cards/${cardId}/likes`, 'DELETE');
+  toggleLike(cardId, isDislike = false) {
+    return this._request(`/cards/${cardId}/likes`, isDislike ? 'DELETE' : 'PUT');
   }
 
   avatarEdit(data) {
