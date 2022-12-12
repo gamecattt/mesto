@@ -88,10 +88,10 @@ function openConfirm(id, element) {
   confirmPopup.setSubmitHandler(async () => {
     try {
       await api.deletePost(id);
+      element.remove();
     } catch (err) {
       console.log(err);
     }
-    element.remove();
   });
   confirmPopup.open();
 }
