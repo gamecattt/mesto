@@ -86,7 +86,11 @@ function handleCardClick(name, link) {
 const confirmPopup = new PopupWithForm('#confirmPopup');
 function openConfirm(id, element) {
   confirmPopup.setSubmitHandler(async () => {
-    await api.deletePost(id);
+    try {
+      await api.deletePost(id);
+    } catch (err) {
+      console.log(err);
+    }
     element.remove();
   });
   confirmPopup.open();
